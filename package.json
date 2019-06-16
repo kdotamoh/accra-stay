@@ -1,0 +1,20 @@
+{
+  "name": "accra-stay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "githum.com/kdotamoh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.6.0",
+    "puppeteer": "^1.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
