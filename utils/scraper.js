@@ -76,7 +76,8 @@ const scraper = async () => {
     scrapeMeqasa(),
     scrapeTonaton()
   ]);
-  return listings;
+  const data = [].concat(...listings)
+  return data;
 };
 
 module.exports = scraper;
