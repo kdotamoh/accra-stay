@@ -1,10 +1,14 @@
 const puppeteer = require("puppeteer");
+const shuffle = require("./shuffle");
 
 const scrapeTonaton = async () => {
   try {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto("https://tonaton.com/en/ads/accra/property");
+    await page.goto("https://tonaton.com/en/ads/accra/property", {
+      waitUntil: "load",
+      timeout: 0
+    });
     await page.waitForSelector(".ui-item");
 
     const scrapedData = await page.evaluate(() => {
@@ -26,7 +30,10 @@ const scrapeTonaton = async () => {
 const scrapeMeqasa = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto("https://meqasa.com/apartments-for-rent-in-Accra");
+  await page.goto("https://meqasa.com/apartments-for-rent-in-Accra", {
+    waitUntil: "load",
+    timeout: 0
+  });
 
   const scrapedData = await page.evaluate(() => {
     const itemList = [
@@ -76,7 +83,8 @@ const scraper = async () => {
     scrapeMeqasa(),
     scrapeTonaton()
   ]);
-  const data = [].concat(...listings)
+  const data = [].concat(...listings);
+  shuffle(data);
   return data;
 };
 
